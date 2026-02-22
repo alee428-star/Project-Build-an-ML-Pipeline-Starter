@@ -44,7 +44,7 @@ def go(args):
      args.output_artifact,
      type=args.output_type,
      description=args.output_description,
- )
+     )
     artifact.add_file("clean_sample.csv")
     run.log_artifact(artifact)
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         help = 'The type for the output artifact' ## INSERT DESCRIPTION HERE,
         required = True
     )
-
+    
     parser.add_argument(
         "--output_description", 
         type = str ## INSERT TYPE HERE: str, float or int,
@@ -92,11 +92,10 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "--max_price",
-        type = float ## INSERT TYPE HERE: str, float or int,
-        help = 'The maximum price to consider' ## INSERT DESCRIPTION HERE,
+        type = float, ## INSERT TYPE HERE: str, float or int,
+        help = 'The maximum price to consider', ## INSERT DESCRIPTION HERE,
         required = True
     )
-
 
     args = parser.parse_args()
 
