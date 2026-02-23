@@ -30,8 +30,18 @@ def main(args):
     with tempfile.TemporaryDirectory() as tmpdir:
         test_file = os.path.join("src", "data_check", "test_data.py")
         result = subprocess.run(
-            ["pytest", "-q", test_file, "--disable-warnings", "--maxfail=1"],
-            cwd=".",
+            [
+                "pytest",
+                "-q",
+                test_file,
+                "--disable-warnings",
+                "--maxfail=1",
+                f"--csv={args.csv}",
+                f"--ref={args.ref}",
+                f"--kl_threshold={args.kl_threshold}",
+                f"--min_price={args.min_price}",
+                f"--max_price={args.max_price}",
+            ],
             capture_output=True,
             text=True,
         )
