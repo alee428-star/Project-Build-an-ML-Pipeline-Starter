@@ -69,18 +69,18 @@ def go(config: DictConfig):
             )
 
         if "data_check" in active_steps:
-                mlflow.run(
-                    f"{config['main']['components_repository']}/data_check",
-                    "main",
-                    env_manager="conda",
-                    parameters={
-                        "csv": "wandb-artifact://clean_sample.csv:clean_data:latest",
-                        "ref": "wandb-artifact://clean_sample.csv:clean_data:reference",
-                        "kl_threshold": config["data_check"]["kl_threshold"],
-                        "min_price": config["etl"]["min_price"],
-                        "max_price": config["etl"]["max_price"]
-                     }
-                )
+            mlflow.run(
+                f"{config['main']['components_repository']}/data_check",
+                "main",
+                env_manager="conda",
+                parameters={
+                    "csv": f"wandb-artifact://{config['basic_cleaning']['output_artifact']}:latest",
+                    "ref": f"wandb-artifact://{config['basic_cleaning']['output_artifact']}:reference",
+                    "kl_threshold": config["data_check"]["kl_threshold"],
+                    "min_price": config["etl"]["min_price"],
+                    "max_price": config["etl"]["max_price"],
+                }
+            )
 
         if "data_split" in active_steps:
             ##################
