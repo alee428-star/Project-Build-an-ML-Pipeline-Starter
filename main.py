@@ -6,6 +6,8 @@ import wandb
 import hydra
 from omegaconf import DictConfig
 
+hydra.core.global_hydra.GlobalHydra.instance().clear()
+
 _steps = [
     "download",
     "basic_cleaning",
