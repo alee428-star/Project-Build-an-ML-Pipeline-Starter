@@ -1,11 +1,10 @@
 import argparse
-import mlflow
 import pandas as pd
 import scipy.stats
 import tempfile
 import subprocess
-import json
 import os
+import wandb
 
 
 def kl_divergence(p, q):
@@ -14,10 +13,15 @@ def kl_divergence(p, q):
 
 
 def main(args):
+    run = wandb.init(job_type="data_check")
 
-    # Download artifacts
-    csv_path = mlflow.artifacts.download_artifacts(args.csv)
-    ref_path = mlflow.artifacts.download_artifacts(args.ref)
+    # Download latest cleaned sample
+    csv_art = run.use_artifact(args.csv)
+    csv_path = csv_art.file()
+
+    # Download reference cleaned sample
+    ref_art = run.use_artifact(args.ref)
+    ref_path = ref_art.file()
 
     df = pd.read_csv(csv_path)
     df_ref = pd.read_csv(ref_path)
