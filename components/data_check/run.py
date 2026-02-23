@@ -28,12 +28,17 @@ def main(args):
 
     # Run pytest on the data
     with tempfile.TemporaryDirectory() as tmpdir:
-        test_file = os.path.join("src", "data_check", "test_data.py")
+        test_file = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "src", "data_check", "test_data.py")
+            )
+        rootdir = os.path.abspath(os.path.dirname(__file__))
+
         result = subprocess.run(
             [
                 "pytest",
                 "-q",
                 test_file,
+                "--rootdir", rootdir,
                 "--disable-warnings",
                 "--maxfail=1",
                 f"--csv={args.csv}",
