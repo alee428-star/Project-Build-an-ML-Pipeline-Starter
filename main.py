@@ -74,8 +74,8 @@ def go(config: DictConfig):
                 "main",
                 env_manager="conda",
                 parameters={
-                    "csv": f"wandb-artifact://{config['basic_cleaning']['output_artifact']}:latest",
-                    "ref": f"wandb-artifact://{config['basic_cleaning']['output_artifact']}:reference",
+                    "csv": f"wandb-artifact://clean_data/{config['basic_cleaning']['output_artifact']}:latest",
+                    "ref": f"wandb-artifact://clean_data/{config['basic_cleaning']['output_artifact']}:reference",
                     "kl_threshold": config["data_check"]["kl_threshold"],
                     "min_price": config["etl"]["min_price"],
                     "max_price": config["etl"]["max_price"],
