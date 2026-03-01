@@ -149,3 +149,4 @@ outputs/
 random_forest_dir/
 multirun/
 src/basic_cleaning/*clean_sample.csv
+rf_config.json
