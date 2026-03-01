@@ -6,6 +6,12 @@ to be retrained with the same cadence, necessitating an end-to-end pipeline that
 
 In this project you will build such a pipeline.
 
+## Project Submission Links
+This project was submitted as part of the WGU D501 / Udacity Machine Learning DevOps course. The following links provide access to the public code repository and the experiment tracking workspace used for this submission.
+
+* Public GitHub repository: https://github.com/alee428-star/Project-Build-an-ML-Pipeline-Starter
+* Public Weights & BIases project: https://wandb.ai/alee428-western-governors-university/nyc_airbnb
+
 ## Table of contents
 
 - [Preliminary steps](#preliminary-steps)
