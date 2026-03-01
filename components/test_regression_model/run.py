@@ -17,6 +17,14 @@ logger = logging.getLogger()
 
 
 def go(args):
+    """
+    Evaluate the promoted model on the test dataset. 
+    
+    This step downloads the production model artifact and the test dataset, 
+    performs inference, computes final performance metrics, and logs them 
+    for release validation. It serves as the final check that the selected model 
+    generalizes beyond training and validation data used during development. 
+    """
 
     run = wandb.init(job_type="test_model")
     run.config.update(args)

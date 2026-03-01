@@ -39,6 +39,14 @@ logger = logging.getLogger()
 
 
 def go(args):
+    """
+    Train a Random Forest regression model using the train/validation partitions.
+
+    This step loads the training data, fits a model using configured hyperparameters,
+    evaluates it on the validation set, and exports a serialized MLflow model artifact.
+    It produces a reproducible model whose performance can be compared
+    across sweeps, tracked experiments, and future pipeline runs.
+    """
 
     run = wandb.init(job_type="train_random_forest")
     run.config.update(args)

@@ -15,6 +15,14 @@ logger = logging.getLogger()
 
 
 def go(args):
+    """
+    Split the cleaned dataset into train, validation, and test partitions for the pipeline.
+
+    This step consumes the cleaned dataset artifact, performs a deterministic split using
+    the provided seed, and logs separate artifacts for each partition. The goal is to
+    create stable, reproducible subsets that downstream training and evaluation steps
+    can rely on.
+    """
 
     run = wandb.init(job_type="train_val_test_split")
     run.config.update(args)

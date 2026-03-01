@@ -13,7 +13,16 @@ logger = logging.getLogger()
 
 # DO NOT MODIFY
 def go(args):
+    """
+        Perform the initial cleaning stage of the NYC Airbnb price prediction pipeline.
 
+        This step downloads the raw dataset artifact, applies minimal, essential
+        cleaning operations (price filtering, type normalization, removal of invalid
+        entries), and logs a cleaned artifact used by the train/validation/test split
+        component. The goal is to preserve statistical properties of the data while
+        ensuring it is safe and consistent for modeling.
+
+    """
     run = wandb.init(job_type="basic_cleaning")
     run.config.update(args)
 

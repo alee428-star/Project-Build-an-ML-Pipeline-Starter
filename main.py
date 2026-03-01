@@ -6,6 +6,17 @@ import wandb
 import hydra
 from omegaconf import DictConfig
 
+"""
+Entry point for orchestrating the NYC Airbnb price‑prediction pipeline.
+
+This module coordinates  execution of all pipeline components (data ingestion,
+cleaning, splitting, training, hyperparameter sweeping, model promotion, final
+testing). It interprets the requested step sequence, resolves paths relative to the
+original working directory, and delegates each stage to a corresponding MLflow
+component. The goal is to provide a reproducible, end‑to‑end workflow that can be
+run as a single command or as a targeted subset of steps during development.
+"""
+
 hydra.core.global_hydra.GlobalHydra.instance().clear()
 
 _steps = [
